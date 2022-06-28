@@ -1,0 +1,120 @@
+*{
+    user-select: none;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito-Medium.ttf');
+}
+
+.topline{
+    position: absolute;
+    left: 0vw;
+    top: 0vw;
+    width: 100%;
+    height: 0.35vw;
+    background-color: #2e6bdb;
+}
+
+.container{
+    font-family: 'Nunito';
+    color: white;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    width: 32.5vw;
+    height: 25vw;
+    border-radius: 0.15vw;
+    position: absolute;
+    top: 15vw;
+    left: 35vw;
+    background-color: rgb(20, 20, 20);
+}
+
+::-webkit-scrollbar {
+    width: 0.3vw;
+    height: 0vw;
+}
+  
+::-webkit-scrollbar-track {
+    background: #3a3636d3;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: rgba(46, 107, 219, 0.692);
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(46, 107, 219);
+}
+
+.fraktionlistbox{
+    position: absolute;
+    left: -0.15vw;
+    top: 1.25vw;
+    width: 32vw;
+    height: 23vw;
+    background: transparent;
+    overflow: scroll;
+}
+
+.fraktionbox{
+    position: relative;
+    display: inline-block;
+    margin-left: 0.25vw;
+    margin-top: 0.25vw;
+    left: 0.35vw;
+    top: 0vw;
+    background-color: rgba(5, 5, 5, 0.651);
+    border-radius: 0.15vw;
+    width: 15vw;
+    height: 6vw;
+}
+
+.fraktionicon{
+    position: absolute;
+    left: 0.5vw;
+    top: 1.5vw;
+    height: 3vw;
+}
+
+.fraktionname{
+    position: absolute;
+    left: 4vw;
+    top: 1.75vw;
+    font-size: 0.8vw;
+}
+
+.fraktionmitglieder{
+    position: absolute;
+    left: 4vw;
+    top: 3vw;
+    font-size: 0.8vw;
+}
+
+.fake-btn{
+    border: transparent;
+    outline: none;
+    position: absolute;
+    right: 0.25vw;
+    bottom: 0.25vw;
+    width: 5vw;
+    background-color: #2e6bdb;
+    height: 1.5vw;
+    border-radius: 0.15vw;
+    color: white;
+    font-family: 'Nunito';
+    text-align: center;
+    line-height: 1.7vw;
+    font-size: 0.7vw;
+    transition: 500ms;
+}
+
+.fake-btn:hover{
+    transition: 500ms;
+    box-shadow: 1px 2px 18px 4px #2e6bdb;
+    -webkit-box-shadow: 1px 2px 18px 4px #2e6bdb;
+    -moz-box-shadow: 1px 2px 18px 4px #2e6bdb;
+}

@@ -1,0 +1,95 @@
+*{
+    user-select: none;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito-Medium.ttf');
+}
+
+body{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.container{
+    position: relative;
+    margin-top: 3vh;
+    width: 50vh;
+    height: 25vh;
+    background-color: rgb(12, 12, 12);
+    border-radius: 0.2vh;
+    text-align: center;
+    color: white;
+    font-family: 'Nunito';
+    font-size: 2vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+}
+
+.label{
+    position: relative;
+    margin-top: 2vh;
+}
+
+#accept-button{
+    border: transparent;
+    border-radius: 0.2vh;
+    background-color: #2268d3;
+    color: white;
+    font-family: 'Nunito';
+    position: relative;
+    width: 16vh;
+    font-size: 2vh;
+    height: 3.5vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 2vh;
+    margin-left: 2vh;
+}
+
+#accept-button:hover{
+    transition: 500ms;
+    background-color: #114da7;
+}
+
+#noaccept-button{
+    border: transparent;
+    border-radius: 0.2vh;
+    background-color: #db342e;
+    color: white;
+    font-family: 'Nunito';
+    position: relative;
+    width: 16vh;
+    font-size: 2vh;
+    height: 3.5vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 2vh;
+    margin-left: 2vh;
+}
+
+#noaccept-button:hover{
+    transition: 500ms;
+    background-color: #a31914;
+}

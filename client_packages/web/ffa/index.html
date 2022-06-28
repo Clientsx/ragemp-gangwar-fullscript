@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="topline"></div>
+        <i class="fas fa-close" onclick="closeFFA()"></i>
+        <div class="ffaitembox">
+
+            <div class="ffaitem ffa1 default" onclick="selectFFA(1)"><label class="ffaname">W&uuml;rfelpark</label><label class="ffaplayers ffa1player">0 Spieler</label></div>
+            <div class="ffaitem ffa2 default" onclick="selectFFA(2)"><label class="ffaname">LS Supply</label><label class="ffaplayers ffa2player">0 Spieler</label></div>
+            <div class="ffaitem ffa3 default" onclick="selectFFA(3)"><label class="ffaname">Sandy Shores</label><label class="ffaplayers ffa3player">0 Spieler</label></div>
+
+        </div>
+        <div class="fake-btn" onclick="joinffa();">Beitreten</div>
+    </div>
+</body>
+<script>
+let selectedFFA = null;
+
+function unselectall()
+{
+    $(".ffa1").removeClass("active");
+    $(".ffa2").removeClass("active");
+    $(".ffa3").removeClass("active");
+
+    $(".ffa1").addClass("default");
+    $(".ffa2").addClass("default");
+    $(".ffa3").addClass("default");
+}
+
+function selectFFA(id)
+{
+    unselectall();
+    $(".ffa"+id).addClass("active");
+    selectedFFA = id;
+}
+
+function joinffa()
+{
+    if (selectedFFA == null) return;
+    mp.trigger("tryJoinFFA", parseInt(selectedFFA));
+}
+
+function updateFFAPlayer(ffa1, ffa2, ffa3)
+{
+    $(".ffa1player").html(`${ffa1} Spieler`);
+    $(".ffa2player").html(`${ffa2} Spieler`);
+    $(".ffa3player").html(`${ffa3} Spieler`);
+}
+
+function closeFFA()
+{
+    mp.trigger("closeFFA2")
+}
+</script>
+</html>

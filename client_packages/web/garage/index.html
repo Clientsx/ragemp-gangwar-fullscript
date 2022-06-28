@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="topline"></div>
+        <i class="fas fa-close" onclick="closeGarage()"></i>
+
+        <div id="fahrzeuge-tab">
+
+        </div>
+
+        <div id="bikes-tab">
+
+        </div>
+
+        <div id="events-tab">
+
+        </div>
+
+        <div id="shop-tab">
+
+        </div>
+
+    </div>
+    <div class="normaltab-container active tab" onclick="showTab('fahrzeuge')"><div class="topline"></div>Fahrzeuge</div>
+    <div class="bikestab-container default tab" onclick="showTab('bikes')"><div class="topline"></div>Bikes</div>
+    <div class="eventstab-container default tab" onclick="showTab('events')"><div class="topline"></div>Event Fahrzeuge</div>
+    <div class="shoptab-container default tab" onclick="showTab('shop')"><div class="topline"></div>Shop Fahrzeuge</div>
+
+    <button class="fake-btn" onclick="ausparken()">Ausparken</button>
+
+</body>
+<script>
+
+    let currentTab = 1;
+
+    let fahrzeugecars = 0;
+    let bikescars = 0;
+    let eventcars = 0;
+    let shopcars = 0;
+
+    let selectedFahrzeug = null;
+    let selectedBike = null;
+    let selectedEvent = null;
+    let selectedShop = null;
+
+    function createShopCar(carname, level){
+    var $html = $(`
+        <div class="fahrzeug-item-container" id="shopcar-item-byId-${shopcars}" onclick="pickShopVehicle(${shopcars})">
+            <div class="topline"></div>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <label class="fahrzeug-item-name" id="shopcar-itemname-byId-${shopcars}">${carname}</label>
+            <label class="fahrzeug-item-level">Level: <span id="shopcar-itemlevel-byId-${shopcars}">${level}</span></label>
+        </div>
+    `)
+    $("#shop-tab").prepend($html)
+    shopcars++;
+    }
+
+    function pickShopVehicle(id)
+    {
+        if (selectedShop == null)
+        {
+            document.getElementById("shopcar-item-byId-"+id).style.backgroundColor = "#2e6bdb";
+            selectedShop = id;
+        }
+        else 
+        {
+            document.getElementById("shopcar-item-byId-"+selectedShop).style.backgroundColor = "rgba(5, 5, 5, 0.651)";
+            document.getElementById("shopcar-item-byId-"+id).style.backgroundColor = "#2e6bdb";
+            selectedShop = id;
+        }
+    }
+
+    function createEventCar(carname, level){
+    var $html = $(`
+        <div class="fahrzeug-item-container" id="eventcar-item-byId-${eventcars}" onclick="pickEventVehicle(${eventcars})">
+            <i class="fa-solid fa-gift"></i>
+            <label class="fahrzeug-item-name" id="eventcar-itemname-byId-${eventcars}">${carname}</label>
+            <label class="fahrzeug-item-level">Level: <span id="eventcar-itemlevel-byId-${eventcars}">${level}</span></label>
+        </div>
+    `)
+    $("#events-tab").prepend($html)
+    eventcars++;
+    }
+
+    function pickEventVehicle(id)
+    {
+        if (selectedEvent == null)
+        {
+            document.getElementById("eventcar-item-byId-"+id).style.backgroundColor = "#2e6bdb";
+            selectedEvent = id;
+        }
+        else 
+        {
+            document.getElementById("eventcar-item-byId-"+selectedEvent).style.backgroundColor = "rgba(5, 5, 5, 0.651)";
+            document.getElementById("eventcar-item-byId-"+id).style.backgroundColor = "#2e6bdb";
+            selectedEvent = id;
+        }
+    }
+
+    function createBikesCar(carname, level){
+    var $html = $(`
+        <div class="fahrzeug-item-container" id="bikecar-item-byId-${bikescars}" onclick="pickBikeVehicle(${bikescars})">
+            <i class="fa-solid fa-motorcycle"></i>
+            <label class="fahrzeug-item-name" id="bikecar-itemname-byId-${bikescars}">${carname}</label>
+            <label class="fahrzeug-item-level">Level: <span id="bikecar-itemlevel-byId-${bikescars}">${level}</span></label>
+        </div>
+    `)
+    $("#bikes-tab").prepend($html)
+    bikescars++;
+    }
+
+    function pickBikeVehicle(id)
+    {
+        if (selectedBike == null)
+        {
+            document.getElementById("bikecar-item-byId-"+id).style.backgroundColor = "#2e6bdb";
+            selectedBike = id;
+        }
+        else 
+        {
+            document.getElementById("bikecar-item-byId-"+selectedBike).style.backgroundColor = "rgba(5, 5, 5, 0.651)";
+            document.getElementById("bikecar-item-byId-"+id).style.backgroundColor = "#2e6bdb";
+            selectedBike = id;
+        }
+    }
+
+    function createFahrzeugCar(carname, level){
+    var $html = $(`
+        <div class="fahrzeug-item-container" id="fahrzeugcar-item-byId-${fahrzeugecars}" onclick="pickNormalVehicle(${fahrzeugecars})">
+            <i class="fa-solid fa-car"></i>
+            <label class="fahrzeug-item-name" id="ncar-itemname-byId-${fahrzeugecars}">${carname}</label>
+            <label class="fahrzeug-item-level">Level: <span id="ncar-itemlevel-byId-${fahrzeugecars}">${level}</span></label>
+        </div>
+    `)
+    $("#fahrzeuge-tab").prepend($html)
+    fahrzeugecars++;
+    }
+
+    function pickNormalVehicle(id)
+    {
+        if (selectedFahrzeug == null)
+        {
+            document.getElementById("fahrzeugcar-item-byId-"+id).style.backgroundColor = "#2e6bdb";
+            selectedFahrzeug = id;
+        }
+        else 
+        {
+            document.getElementById("fahrzeugcar-item-byId-"+selectedFahrzeug).style.backgroundColor = "rgba(5, 5, 5, 0.651)";
+            document.getElementById("fahrzeugcar-item-byId-"+id).style.backgroundColor = "#2e6bdb";
+            selectedFahrzeug = id;
+        }
+    }
+
+    function hideAlleTabs()
+    {
+        document.getElementById("fahrzeuge-tab").style.display = "none"
+        document.getElementById("bikes-tab").style.display = "none"
+        document.getElementById("events-tab").style.display = "none"
+        document.getElementById("shop-tab").style.display = "none"
+
+        $(".normaltab-container").removeClass("active");
+        $(".bikestab-container").removeClass("active");
+        $(".eventstab-container").removeClass("active");
+        $(".shoptab-container").removeClass("active");
+    
+        $(".normaltab-container").addClass("default");
+        $(".bikestab-container").addClass("default");
+        $(".eventstab-container").addClass("default");
+        $(".shoptab-container").addClass("default");
+    }
+
+    function showTab(tabname)
+    {
+        hideAlleTabs();
+        document.getElementById(tabname+"-tab").style.display = "block"
+        switch (tabname) {
+            case "fahrzeuge":
+            $(".normaltab-container").removeClass("default");
+            $(".normaltab-container").addClass("active");
+            currentTab = 1;
+            break;
+            case "bikes":
+            $(".bikestab-container").removeClass("default");
+            $(".bikestab-container").addClass("active");
+            currentTab = 2;
+            break;
+            case "events":
+            $(".eventstab-container").removeClass("default");
+            $(".eventstab-container").addClass("active");
+            currentTab = 3;
+            break;
+            case "shop":
+            $(".shoptab-container").removeClass("default");
+            $(".shoptab-container").addClass("active");
+            currentTab = 4;
+            break;
+        }
+    }
+
+    function ausparken()
+    {
+        switch (currentTab) {
+            case 1:
+                let carname1 = document.getElementById("ncar-itemname-byId-"+selectedFahrzeug).textContent;
+                let carlevel1 = document.getElementById("ncar-itemlevel-byId-"+selectedFahrzeug).textContent;
+                mp.trigger("TryParkout", carname1, carlevel1);
+            break;
+            case 2:
+                let carname2 = document.getElementById("bikecar-itemname-byId-"+selectedBike).textContent;
+                let carlevel2 = document.getElementById("bikecar-itemlevel-byId-"+selectedBike).textContent;
+                mp.trigger("TryParkout", carname2, carlevel2);
+            break;
+            case 3:
+                let carname3 = document.getElementById("eventcar-itemname-byId-"+selectedEvent).textContent;
+                let carlevel3 = document.getElementById("eventcar-itemlevel-byId-"+selectedEvent).textContent;
+                mp.trigger("TryParkout", carname3, carlevel3);
+            break;
+            case 4:
+                let carname4 = document.getElementById("shopcar-itemname-byId-"+selectedShop).textContent;
+                let carlevel4 = document.getElementById("shopcar-itemlevel-byId-"+selectedShop).textContent;
+                mp.trigger("TryParkout", carname4, carlevel4);
+            break;
+        }
+    }
+
+    function closeGarage()
+    {
+        mp.trigger("closeGarage")
+    }
+</script>
+</html>

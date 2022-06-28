@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="topline"></div>
+
+        <input type="text" id="input-name" placeholder="Benutzername">
+        <i class="fas fa-user"></i>
+
+        <div class="fake-btn">Anmelden<i class="fas fa-angle-double-right loginstatus"></i></div>
+    </div>
+
+    <div class="notifyContainer"><div class="topline"></div><label id="errorcode">Dein Benutzername ist zu kurz!</label></div>
+</body>
+<script>
+var isClicked = false;
+var timer;
+
+$("body").keydown(function(e){
+  if (e.keyCode == 13){
+    if (isClicked == true) return;
+    $(".loginstatus").removeClass("fa-angle-double-right");
+    $(".loginstatus").addClass("fa-spinner-third");
+    $(".loginstatus").addClass("spin-anim");
+    isClicked = true;
+    let username = document.getElementById("input-name").value;
+    if (username.length <= 3) return logError("Dein Benutzername ist zu kurz!");
+    if (username.includes(" ")) return logError("Du darfst kein Leerzeichen haben!");
+    mp.trigger("TryLogin", username);
+  }
+});
+
+$(".fake-btn").click(function(){
+    if (isClicked == true) return;
+    $(".loginstatus").removeClass("fa-angle-double-right");
+    $(".loginstatus").addClass("fa-spinner-third");
+    $(".loginstatus").addClass("spin-anim");
+    isClicked = true;
+    let username = document.getElementById("input-name").value;
+    if (username.length <= 3) return logError("Dein Benutzername ist zu kurz!");
+    if (username.includes(" ")) return logError("Du darfst kein Leerzeichen haben!");
+    mp.trigger("TryLogin", username);
+});
+
+function logError(error)
+{
+    timer = setTimeout(() => {
+        $(".loginstatus").removeClass("fa-spinner-third");
+        $(".loginstatus").removeClass("spin-anim");
+        $(".loginstatus").addClass("fa-times");
+        $("#errorcode").html(error);
+        $(".notifyContainer").css("display", "block");
+    }, 1000);
+    setTimeout(() => {
+        $(".loginstatus").removeClass("fa-times");
+        $(".loginstatus").addClass("fa-angle-double-right");
+        $(".notifyContainer").css("display", "none");
+        isClicked = false;
+    }, 3000);
+}
+
+function logTrue(truecode)
+{
+    timer = setTimeout(() => {
+        $(".loginstatus").removeClass("fa-spinner-third");
+        $(".loginstatus").removeClass("spin-anim");
+        $(".loginstatus").addClass("fa-check");
+    }, 1000)
+    setTimeout(() => {
+        $(".loginstatus").removeClass("fa-check");
+        mp.trigger("closeLogin")
+    }, 3000);
+}
+</script>
+</html>

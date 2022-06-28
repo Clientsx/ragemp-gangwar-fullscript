@@ -1,0 +1,227 @@
+*{
+    user-select: none;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito-Medium.ttf');
+}
+
+body{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#container {
+    position: relative;
+    margin-top: 3vh;
+    width: 80vh;
+    height: 60vh;
+    background-color: rgb(12, 12, 12);
+    border-radius: 0.2vh;
+}
+
+.tab-container{
+    position: relative;
+    margin-top: 1.5vh;
+    background-color: transparent;
+    width: 100%;
+    height: 4vh;
+}
+
+.fa-close{
+    position: absolute;
+    color: white;
+    font-size: 2.5vh;
+    right: 2vh;
+    top: 0.75vh;
+}
+
+.fa-close:hover{
+    transition: 2s;
+    color: red;
+}
+
+::-webkit-scrollbar{
+    width: 0vh;
+    height: 0vh;
+}
+
+.tab{
+    font-family: 'Nunito';
+    font-size: 1.75vh;
+    position: relative;
+    display: inline-flex;
+    color: white;
+    text-align: center;
+    margin-left: 2vh;
+    width: 15vh;
+    height: 100%;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 0.2vh;
+}
+
+.tab:hover{
+    transition: 500ms;
+    text-decoration: underline 0.3vh;
+    text-decoration-color: #2268d3;
+}
+
+.new-title{
+    color: white;
+    font-family: 'Nunito';
+    font-size: 2vh;
+    position: absolute;
+    left: 15vh;
+    top: 15vh;
+}
+
+.changelogs-title{
+    color: white;
+    font-family: 'Nunito';
+    font-size: 2vh;
+    position: absolute;
+    right: 15vh;
+    top: 15vh;
+}
+
+.news-container{
+    position: absolute;
+    left: 2vh;
+    width: 36vh;
+    top: 18vh;
+    height: 40vh;
+    background-color: transparent;
+    overflow: scroll;
+}
+
+.changelogs-container{
+    position: absolute;
+    right: 2vh;
+    width: 36vh;
+    top: 18vh;
+    height: 40vh;
+    background-color: transparent;
+    overflow: scroll;
+}
+
+.news-itemcontainer{
+    position: relative;
+    width: 100%;
+    border-radius: 0.2vh;
+    height: 35vh;
+    background-color: rgb(20, 20, 20);
+    margin-top: 1.5vh;
+    text-align: center;
+}
+
+.changelogs-itemcontainer{
+    position: relative;
+    width: 100%;
+    border-radius: 0.2vh;
+    height: 35vh;
+    background-color: rgb(20, 20, 20);
+    margin-top: 1.5vh;
+}
+
+.news-itemimage{
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    width: 100%;
+    height: 15vh;
+    z-index: 1;
+}
+
+.news-itemtitle{
+    font-size: 2vh;
+    z-index: 99;
+    line-height: 35vh;
+    color: white;
+    font-family: 'Nunito';
+}
+
+.newstext{
+    color: white;
+    font-family: 'Nunito';
+    font-size:1.35vh;
+    position: absolute;
+    left: 8.5vh;
+    top: 20vh;
+}
+
+.changelogs-label{
+    position: relative;
+    color: white;
+    left: 1vh;
+    top: 1vh;
+    margin-top: 1vh;
+    font-family: 'Nunito';
+    font-size: 1.5vh;
+}
+
+#tab-crosshair{
+    display: none;
+}
+
+#tab-settings{
+    display: none;
+}
+
+#crosshair-item-containerbox{
+    position: absolute;
+    left: 2vh;
+    width: 76vh;
+    top: 10vh;
+    height: 48vh;
+    background-color: transparent;
+    border-radius: 0.2vh;
+    display: none;
+}
+
+.crosshair-itemcontainer{
+    position: relative;
+    left: 1vh;
+    top: 1vh;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    width: 10vh;
+    height: 10vh;
+    background-color: rgb(20, 20, 20);
+    border-radius: 0.2vh;
+    display: inline-block;
+}
+
+.crosshair-img{
+    height: 10vh;
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+}
+
+.save-crosshairbutton{
+    border: transparent;
+    border-radius: 0.1vw;
+    background-color: #2268d3;
+    color: white;
+    font-family: 'Nunito';
+    height: 4vh;
+    font-size: 1.75vh;
+    width: 18vh;
+    position: absolute;
+    bottom: 2vh;
+    right: 2vh;
+    text-align: center;
+    line-height: 4vh;
+}

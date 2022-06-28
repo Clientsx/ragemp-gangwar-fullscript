@@ -1,0 +1,47 @@
+*{
+    user-select: none;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito-Medium.ttf');
+}
+
+body {
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100vh;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#container {
+    position: relative;
+    margin-top: 0vh;
+    width: 25vh;
+    height: 5vh;
+    background-color: rgb(12, 12, 12);
+    border-radius: 0.1vw;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+#team1points{
+    color: white;
+    font-size: 2vh;
+    font-family: 'Nunito';
+}
+
+#team2points{
+    color: white;
+    font-size: 2vh;
+    font-family: 'Nunito';
+}

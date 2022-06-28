@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>   
+    <title>Outfits</title>
+</head>
+<body>
+    <div class="container">
+        <button id="play-button" onclick="play()">Spielen</button>
+    </div>
+</body>
+<script>
+let clicked = false;
+let outfitnumbers = 0;
+
+function createOutfit(){
+    var $html = $(`
+    <div class="itembox" onclick="testoutfit(${outfitnumbers})">
+        Outfit #${outfitnumbers}
+    </div>
+    `)
+    $(".container").prepend($html)
+    outfitnumbers++;
+}
+
+function testoutfit(id){
+    mp.trigger("GGW:ClientEvent:TryTestPlayOutfit", id)
+    clicked = true;
+}
+
+function play(){
+    if (clicked)
+    {
+        mp.trigger("GGW:ClientEvent:TryPlayOutfit", outfitnumbers)
+    }
+}
+</script>
+</html>

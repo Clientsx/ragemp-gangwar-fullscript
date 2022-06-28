@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+</head>
+<body>
+    <div class="container"><div class="topline"></div>
+
+        <div class="fraktionlistbox">
+
+            <div class="fraktionbox">
+                <div class="topline"></div>
+                <img src="./img/grove.png" class="fraktionicon" alt="">
+                <label class="fraktionname">Grove Street</label>
+                <label class="fraktionmitglieder">15 Mitglieder</label>
+
+                <div class="fake-btn" onclick="joinfrak(1)">Beitreten</div>
+            </div>
+
+            <div class="fraktionbox">
+                <div class="topline"></div>
+                <img src="./img/bloods.png" class="fraktionicon" alt="">
+                <label class="fraktionname">Bloods</label>
+                <label class="fraktionmitglieder">15 Mitglieder</label>
+
+                <div class="fake-btn" onclick="joinfrak(2)">Beitreten</div>
+            </div>
+
+            <div class="fraktionbox">
+                <div class="topline"></div>
+                <img src="./img/ballas.png" class="fraktionicon" alt="">
+                <label class="fraktionname">Ballas</label>
+                <label class="fraktionmitglieder">15 Mitglieder</label>
+
+                <div class="fake-btn" onclick="joinfrak(3)">Beitreten</div>
+            </div>
+
+            <div class="fraktionbox">
+                <div class="topline"></div>
+                <img src="./img/vagos.png" class="fraktionicon" alt="">
+                <label class="fraktionname">Vagos</label>
+                <label class="fraktionmitglieder">15 Mitglieder</label>
+
+                <div class="fake-btn" onclick="joinfrak(4)">Beitreten</div>
+            </div>
+
+            <div class="fraktionbox">
+                <div class="topline"></div>
+                <img src="./img/crips.png" class="fraktionicon" alt="">
+                <label class="fraktionname">Crips</label>
+                <label class="fraktionmitglieder">15 Mitglieder</label>
+
+                <div class="fake-btn" onclick="joinfrak(5)">Beitreten</div>
+            </div>
+
+            <div class="fraktionbox">
+                <div class="topline"></div>
+                <img src="./img/lcn.png" class="fraktionicon" alt="">
+                <label class="fraktionname">La Cosa Nostra</label>
+                <label class="fraktionmitglieder">15 Mitglieder</label>
+
+                <div class="fake-btn" onclick="joinfrak(6)">Beitreten</div>
+            </div>
+
+            <div class="fraktionbox">
+                <div class="topline"></div>
+                <img src="./img/yakuza.png" class="fraktionicon" alt="">
+                <label class="fraktionname">Yakuza</label>
+                <label class="fraktionmitglieder">15 Mitglieder</label>
+
+                <div class="fake-btn" onclick="joinfrak(7)">Beitreten</div>
+            </div>
+
+            <div class="fraktionbox">
+                <div class="topline"></div>
+                <img src="./img/triaden.png" class="fraktionicon" alt="">
+                <label class="fraktionname">Triaden</label>
+                <label class="fraktionmitglieder">15 Mitglieder</label>
+
+                <div class="fake-btn" onclick="joinfrak(8)">Beitreten</div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+<script>
+    function joinfrak(id)
+    {
+        mp.trigger("TryJoinFraktion", parseInt(id));
+    }
+</script>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>   
+    <title>Teamasuwahl</title>
+</head>
+<body>
+    <div id="notifyContainer">Dein Benutzername ist zu Kurz!</div>
+    <div id="container">
+        <div class="teambox-container">
+            <img src="./img/ballas.png" id="teamicon">
+            <label class="teammember" id="Ballas-MEMBER">0 Mitglieder</label>
+            <div class="bottom" onclick="joinFraktion('Ballas')">Beitreten</div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/grove.png" style="left: 3.65vh;" id="teamicon">
+            <label class="teammember" id="Grove-MEMBER">0 Mitglieder</label>
+            <div class="bottom" onclick="joinFraktion('Grove')">Beitreten</div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/bloods.png" style="left: 4vh;" id="teamicon">
+            <label class="teammember" id="Bloods-MEMBER">0 Mitglieder</label>
+            <div class="bottom" onclick="joinFraktion('Bloods')">Beitreten</div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/vagos.png" style="left: 4vh;" id="teamicon">
+            <label class="teammember" id="Vagos-MEMBER">0 Mitglieder</label>
+            <div class="bottom" onclick="joinFraktion('Vagos')">Beitreten</div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/crips.png" id="teamicon">
+            <label class="teammember" id="Crips-MEMBER">0 Mitglieder</label>
+            <div class="bottom" onclick="joinFraktion('Crips')">Beitreten</div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/lcn.png" style="left: 4vh;" id="teamicon">
+            <label class="teammember" id="LCN-MEMBER">0 Mitglieder</label>
+            <div class="bottom" onclick="joinFraktion('LCN')">Beitreten</div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/yakuza.png" style="left: 3.75vh;" id="teamicon">
+            <label class="teammember" id="Yakuza-MEMBER">0 Mitglieder</label>
+            <div class="bottom" onclick="joinFraktion('Yakuza')">Beitreten</div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/triaden.png" style="left: 3.65vh;" id="teamicon">
+            <label class="teammember" id="Triaden-MEMBER">0 Mitglieder</label>
+            <div class="bottom" onclick="joinFraktion('Triaden')">Beitreten</div>
+        </div>
+
+        <div class="teambox-container">
+            <img src="./img/mg13.png" style="left: 3.65vh;" id="teamicon">
+            <label class="teammember" id="MG13-MEMBER">0 Mitglieder</label>
+            <div class="bottom disabled" onclick="joinPrivatFraktion('MG13')" id="MG13-JOIN"><i class="fa-solid fa-lock"></i></div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/lspd.png" style="left: 3.65vh;" id="teamicon">
+            <label class="teammember" id="LSPD-MEMBER">0 Mitglieder</label>
+            <div class="bottom disabled" onclick="joinPrivatFraktion('LSPD')" id="LSPD-JOIN"><i class="fa-solid fa-lock"></i></div>
+        </div>
+        <div class="teambox-container">
+            <img src="./img/187.png" style="left: 3.65vh;" id="teamicon">
+            <label class="teammember" id="187-MEMBER">0 Mitglieder</label>
+            <div class="bottom disabled" onclick="joinPrivatFraktion('187')" id="187-JOIN"><i class="fa-solid fa-lock"></i></div>
+        </div>
+    </div>
+</body>
+<script>
+let mg13 = false,
+lspd = false,
+f187 = false;
+
+function activateFraktion(frakname){
+    $(`#${frakname}-JOIN`).removeClass("disabled")
+    document.getElementById(frakname+"-JOIN").innerHTML = null;
+    document.getElementById(frakname+"-JOIN").innerHTML = `Beitreten`;
+    switch (frakname) {
+        case "MG13":
+            mg13 = true;
+        break;
+        case "LSPD":
+            lspd = true;
+        break;
+        case "187":
+            f187 = true;
+        break;
+    
+        default:
+        break;
+    }
+}
+
+
+function logError(errorcode)
+{
+    document.getElementById("notifyContainer").style.display = "block";
+    document.getElementById("notifyContainer").innerHTML = errorcode;
+    timer = setTimeout(() => {
+        document.getElementById("notifyContainer").style.display = "none";
+    }, 3000);
+}
+
+function joinFraktion(frakname)
+{
+    mp.trigger("GGW:ClientEvent:TryJoinTeam", frakname)
+}
+
+function joinPrivatFraktion(frakname)
+{
+    mp.trigger("GGW:ClientEvent:TryJoinPrivatTeam", frakname)
+}
+
+function updateTeamMembers(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11)
+{
+    document.getElementById("Ballas-MEMBER").innerText = `${t1} Mitglieder`
+    document.getElementById("Grove-MEMBER").innerText = `${t2} Mitglieder`
+    document.getElementById("Bloods-MEMBER").innerText = `${t3} Mitglieder`
+    document.getElementById("Vagos-MEMBER").innerText = `${t4} Mitglieder`
+    document.getElementById("Crips-MEMBER").innerText = `${t5} Mitglieder`
+    document.getElementById("LCN-MEMBER").innerText = `${t6} Mitglieder`
+    document.getElementById("Yakuza-MEMBER").innerText = `${t7} Mitglieder`
+    document.getElementById("Triaden-MEMBER").innerText = `${t8} Mitglieder`
+    document.getElementById("MG13-MEMBER").innerText = `${t9} Mitglieder`
+    document.getElementById("LSPD-MEMBER").innerText = `${t10} Mitglieder`
+    document.getElementById("187-MEMBER").innerText = `${t11} Mitglieder`
+}
+</script>
+</html>

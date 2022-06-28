@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+</head>
+<body>
+    <div class="topline"></div>
+    <div class="container">
+        <i class="fas fa-close" onclick="closeWeaponTuner()"></i>
+        <div class="weaponitems-itembox">
+
+        </div>
+    </div>
+</body>
+<script>
+function createWeaponToBox(weaponname, compstring, compname, preis)
+{
+    var $html = $(`
+        <div class="weapon-box">
+            <label id="weaponcompname">${compstring}</label>
+            <label id="weaponname">${weaponname}</label>
+            <img src="./img/${weaponname}.webp" id="weaponicon">
+            <label id="weaponcomp">${compname}</label>
+            <label id="weaponprice">Preis: ${preis} <span style="color: yellowgreen;">$</span></label>
+            <button id="weapon-buy-button" onclick="buyComponent('${weaponname}', '${compstring}', ${preis})">Kaufen</button>
+        </div>
+    `)
+    $(".weaponitems-itembox").prepend($html)  
+}
+
+function closeWeaponTuner()
+{
+    mp.trigger("closeWeapontuner");
+}
+
+function buyComponent(weaponname, compstring, preis)
+{
+    mp.trigger("tryBuyWeaponComponent", weaponname, compstring, parseInt(preis));
+}
+
+setTimeout(() => {
+    createWeaponToBox("Specialcarbine", "COMPONENT_AT_AR_SUPP_02", "Schaldämpfer", 7500)
+    createWeaponToBox("Specialcarbine", "COMPONENT_AT_SCOPE_MEDIUM", "Visier", 5000)
+    createWeaponToBox("Specialcarbine", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Specialcarbine", "COMPONENT_SPECIALCARBINE_CLIP_03", "Magazin 3", 15000)
+    createWeaponToBox("Specialcarbine", "COMPONENT_SPECIALCARBINE_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Assaultrifle_Mk2", "COMPONENT_AT_AR_SUPP_02", "Schaldämpfer", 7500)
+    createWeaponToBox("Assaultrifle_Mk2", "COMPONENT_AT_SCOPE_MEDIUM_MK2", "Visier", 5000)
+    createWeaponToBox("Assaultrifle_Mk2", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Assaultrifle_Mk2", "COMPONENT_ASSAULTRIFLE_MK2_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Compactrifle", "COMPONENT_COMPACTRIFLE_CLIP_03", "Magazin 3", 15000)
+    createWeaponToBox("Compactrifle", "COMPONENT_COMPACTRIFLE_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Carbinerifle_Mk2", "COMPONENT_AT_AR_SUPP", "Schaldämpfer", 7500)
+    createWeaponToBox("Carbinerifle_Mk2", "COMPONENT_AT_SCOPE_MEDIUM_MK2", "Visier", 5000)
+    createWeaponToBox("Carbinerifle_Mk2", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Carbinerifle_Mk2", "COMPONENT_CARBINERIFLE_MK2_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Carbinerifle", "COMPONENT_AT_AR_SUPP", "Schaldämpfer", 7500)
+    createWeaponToBox("Carbinerifle", "COMPONENT_AT_SCOPE_MEDIUM", "Visier", 5000)
+    createWeaponToBox("Carbinerifle", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Carbinerifle", "COMPONENT_CARBINERIFLE_CLIP_03", "Magazin 3", 15000)
+    createWeaponToBox("Carbinerifle", "COMPONENT_CARBINERIFLE_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Bullpuprifle", "COMPONENT_AT_AR_SUPP", "Schaldämpfer", 7500)
+    createWeaponToBox("Bullpuprifle", "COMPONENT_AT_SCOPE_SMALL", "Visier", 5000)
+    createWeaponToBox("Bullpuprifle", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Bullpuprifle", "COMPONENT_BULLPUPRIFLE_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Advancedrifle", "COMPONENT_AT_AR_SUPP", "Schaldämpfer", 7500)
+    createWeaponToBox("Advancedrifle", "COMPONENT_AT_SCOPE_SMALL", "Visier", 5000)
+    createWeaponToBox("Advancedrifle", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Advancedrifle", "COMPONENT_ADVANCEDRIFLE_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Assaultrifle", "COMPONENT_AT_AR_SUPP_02", "Schaldämpfer", 7500)
+    createWeaponToBox("Assaultrifle", "COMPONENT_AT_SCOPE_MACRO", "Visier", 5000)
+    createWeaponToBox("Assaultrifle", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Assaultrifle", "COMPONENT_ASSAULTRIFLE_CLIP_03", "Magazin 3", 15000)
+    createWeaponToBox("Assaultrifle", "COMPONENT_ASSAULTRIFLE_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Combatpdw", "COMPONENT_AT_SCOPE_SMALL", "Visier", 5000)
+    createWeaponToBox("Combatpdw", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Combatpdw", "COMPONENT_COMBATPDW_CLIP_03", "Magazin 3", 15000)
+    createWeaponToBox("Combatpdw", "COMPONENT_COMBATPDW_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Smg_Mk2", "COMPONENT_AT_PI_SUPP", "Schaldämpfer", 7500)
+    createWeaponToBox("Smg_Mk2", "COMPONENT_AT_SCOPE_SMALL_SMG_MK2", "Visier 2", 7500)
+    createWeaponToBox("Smg_Mk2", "COMPONENT_AT_SCOPE_MACRO_02_SMG_MK2", "Visier", 5000)
+    createWeaponToBox("Smg_Mk2", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Smg_Mk2", "COMPONENT_SMG_MK2_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Smg", "COMPONENT_AT_PI_SUPP", "Schaldämpfer", 7500)
+    createWeaponToBox("Smg", "COMPONENT_AT_SCOPE_MACRO_02", "Visier", 5000)
+    createWeaponToBox("Smg", "COMPONENT_AT_AR_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Smg", "COMPONENT_SMG_CLIP_03", "Magazin 3", 15000)
+    createWeaponToBox("Smg", "COMPONENT_SMG_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Minismg", "COMPONENT_MINISMG_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Microsmg", "COMPONENT_AT_AR_SUPP_02", "Schaldämpfer", 7500)
+    createWeaponToBox("Microsmg", "COMPONENT_AT_SCOPE_MACRO", "Visier", 5000)
+    createWeaponToBox("Microsmg", "COMPONENT_AT_PI_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Microsmg", "COMPONENT_MICROSMG_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Machinepistol", "COMPONENT_AT_PI_SUPP", "Schaldämpfer", 7500)
+    createWeaponToBox("Machinepistol", "COMPONENT_MACHINEPISTOL_CLIP_03", "Magazin 3", 15000)
+    createWeaponToBox("Machinepistol", "COMPONENT_MACHINEPISTOL_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Heavypistol", "COMPONENT_AT_PI_SUPP", "Schaldämpfer", 7500)
+    createWeaponToBox("Heavypistol", "COMPONENT_AT_PI_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Heavypistol", "COMPONENT_HEAVYPISTOL_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Pistol_Mk2", "COMPONENT_AT_PI_SUPP_02", "Schaldämpfer", 7500)
+    createWeaponToBox("Pistol_Mk2", "COMPONENT_AT_PI_FLSH_02", "Taschenlampe", 5000)
+    createWeaponToBox("Pistol_Mk2", "COMPONENT_PISTOL_MK2_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Pistol50", "COMPONENT_AT_AR_SUPP_02", "Schaldämpfer", 7500)
+    createWeaponToBox("Pistol50", "COMPONENT_AT_PI_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Pistol50", "COMPONENT_PISTOL50_CLIP_02", "Magazin 2", 7500)
+    createWeaponToBox("Pistol", "COMPONENT_AT_PI_SUPP_02", "Schaldämpfer", 7500)
+    createWeaponToBox("Pistol", "COMPONENT_AT_PI_FLSH", "Taschenlampe", 5000)
+    createWeaponToBox("Pistol", "COMPONENT_PISTOL_CLIP_02", "Magazin 2", 7500)
+}, 20);
+</script>
+</html>

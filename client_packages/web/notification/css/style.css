@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito-Medium.ttf');
+}
+
+*{
+    font-family: 'Nunito';
+    overflow: hidden;
+    user-select: none;
+    overflow: hidden;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: transparent;
+}
+
+.topline{
+    position: absolute;
+    left: 0vw;
+    top: 0vw;
+    width: 100%;
+    height: 0.35vw;
+    background-color: #2e6bdb;
+    border-top-left-radius: 0.15vw;
+    border-top-right-radius: 0.15vw;
+}
+
+.notification-box{
+    position: relative;
+    color: white;
+    background-color: rgb(20, 20, 20);
+    width: 14.5vw;
+    min-height: 10%;
+    height: auto;
+    border-radius: 0.15vw;
+    top: 0vw;
+    left: 0.25vw;
+    margin-top: 0.25vw;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.notifications{
+    position: absolute;
+    top: 13vw;
+    right: 1vw;
+}
+
+.notification{
+    padding-top: 0.15vw;
+    padding-bottom: 0.25vw;
+    position: relative;
+    height: auto;
+    width: 14.5vw;
+    background-color: rgb(20, 20, 20);
+    word-wrap: break-word;
+    border-top: 0.35vw #2e6bdb solid;
+    margin-top: 0.25vw;
+    margin-left: 0.25vw;
+    padding-right: 0.15vw;
+    min-height: 3vw;
+    top: 0vw;
+    border-radius: 0vw;
+    border-radius: 0.15vw;
+}
+
+#text {
+    color: white;
+    font-size: 0.75vw;
+    font-weight: bolder;
+    margin-left: 0.45vw;
+    margin-top: 0.2vw;
+    align-items: center;
+}
+
+#title {
+    color: white;
+    font-size: 0.6vw;
+    font-weight: bolder;
+    margin-left: 0.45vw;
+    margin-top: 0.2vw;
+    align-items: center;
+}

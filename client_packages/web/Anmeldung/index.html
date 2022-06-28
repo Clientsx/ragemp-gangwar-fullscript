@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>   
+    <title>Anmeldung</title>
+</head>
+<body onload="onloadEvent();">
+    <div id="container">
+        <input type="text" id="username" placeholder="Benutzername">
+        <button id="login-button" onclick="login();">Anmelden</button>
+    </div>
+
+    <div id="progressbar">
+        <div id="progressbar-value"></div>
+    </div>
+
+    <div id="notifyContainer">Dein Benutzername ist zu Kurz!</div>
+</body>
+<script>
+var isClicked = true;
+var timer;
+
+function onloadEvent()
+{
+    setTimeout(() => {
+        document.getElementById("progressbar-value").style.width = "20%";
+    }, 500);
+    setTimeout(() => {
+        document.getElementById("progressbar-value").style.width = "80%";
+    }, 1500);
+    setTimeout(() => {
+        document.getElementById("progressbar-value").style.width = "100%";
+        setTimeout(() => {
+            document.getElementById("progressbar-value").style.width = "0%";
+            document.getElementById("container").style.display = "block"
+            isClicked = false;
+        }, 800);
+    }, 3000);
+}
+
+function logError(errorcode)
+{
+    document.getElementById("notifyContainer").style.display = "block";
+    document.getElementById("notifyContainer").innerHTML = errorcode;
+    document.getElementById("progressbar-value").style.width = "0%";
+    timer = setTimeout(() => {
+        document.getElementById("notifyContainer").style.display = "none";
+        isClicked = false;
+    }, 3000);
+}
+
+$("body").keydown(function(e){
+  if (e.keyCode == 13){
+    if (isClicked) return;
+    isClicked = true;
+    let username = document.getElementById("username").value;
+    if (username.length <= 3) return logError("Dein Benutzername ist zu kurz!");
+    if (username.includes(" ")) return logError("Dein Benutzername darf keine Leerzeichen haben!");
+    document.getElementById("progressbar-value").style.width = "100%";
+    setTimeout(() => {
+        mp.trigger("GGW:ClientEvent:TryLogin", username);
+    }, 2000);
+  }
+});
+
+function login(){
+    if (isClicked) return;
+    isClicked = true;
+    let username = document.getElementById("username").value;
+    if (username.length <= 3) return logError("Dein Benutzername ist zu kurz!");
+    if (username.includes(" ")) return logError("Dein Benutzername darf keine Leerzeichen haben!");
+    document.getElementById("progressbar-value").style.width = "100%";
+    setTimeout(() => {
+        mp.trigger("GGW:ClientEvent:TryLogin", username);
+    }, 2000);
+}
+</script>
+</html>

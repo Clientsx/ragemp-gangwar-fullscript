@@ -1,0 +1,118 @@
+*{
+    user-select: none;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito-Medium.ttf');
+}
+
+.topline{
+    position: absolute;
+    left: 0vw;
+    top: 0vw;
+    width: 100%;
+    height: 0.35vw;
+    background-color: #2e6bdb;
+}
+
+.container{
+    font-family: 'Nunito';
+    color: white;
+    background-color: rgb(20, 20, 20);
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    width: 25vw;
+    height: 25vw;
+    border-radius: 0.15vw;
+    position: absolute;
+    top: 17.5vw;
+    left: 35vw;
+    text-align: center;
+}
+
+.fa-close{
+    position: absolute;
+    right: 0.5vw;
+    top: 0.5vw;
+    color: white;
+    font-size: 1.25vw;
+}
+
+.fa-close:hover{
+    transition: 2s;
+    color: red;
+}
+
+.ffaitembox{
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    top: 8%;
+    height: 80%;
+    background-color: transparent;
+}
+
+.ffaitem{
+    position: relative;
+    left: 0.5%;
+    width: 99%;
+    top: 0%;
+    height: 11.5%;
+    background-color: rgba(5, 5, 5, 0.651);
+    border-radius: 0.15vw;
+    margin-top: 0.25vw;
+}
+
+.default{
+    background-color: rgba(5, 5, 5, 0.651);
+}
+
+.default:hover{
+    background-color: #2e6bdb;
+}
+
+.active{
+    background-color: #2e6bdb;
+}
+
+.ffaname{
+    position: absolute;
+    left: 0.5vw;
+    top: 0.6vw;
+    font-size: 0.9vw;
+}
+
+.ffaplayers{
+    position: absolute;
+    right: 0.5vw;
+    top: 0.6vw;
+    font-size: 0.9vw;
+}
+
+.fake-btn{
+    position: absolute;
+    left: 1%;
+    bottom: 1%;
+    height: 2vw;
+    width: 98%;
+    border-radius: 0.15vw;
+    opacity: 1;
+    background-color: #2e6bdb;
+
+    text-align: center;
+    line-height: 2vw;
+    transition: 1s;
+    color: white;
+    font-size: 1vw;
+}
+
+.fake-btn:hover{
+    transition: 1s;
+    box-shadow: 1px 2px 18px 4px #2e6bdb;
+    -webkit-box-shadow: 1px 2px 18px 4px #2e6bdb;
+    -moz-box-shadow: 1px 2px 18px 4px #2e6bdb;
+}

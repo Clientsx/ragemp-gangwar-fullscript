@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>   
+    <link rel="stylesheet" href="./css/checkbox.css">
+    <title>Userpanel</title>
+</head>
+<body>
+<div id="container">
+    <div class="tab-container">
+        <i class="fas fa-close" onclick="closeUserpanel()"></i>
+        <div class="tab" onclick="selecttab('startseite')" id="startseite-tab" style="text-decoration: underline 0.3vh;text-decoration-color: #2268d3;">Startseite</div>
+        <div class="tab" onclick="selecttab('crosshair')" id="crosshair-tab">Crosshair</div>
+        <div class="tab" onclick="selecttab('settings')" id="settings-tab">Settings</div>
+    </div>
+
+    <div id="tab-startseite">
+        <label class="new-title">Neuigkeiten</label>
+        <div class="news-container">
+
+            <div class="news-itemcontainer">
+                <label class="news-itemtitle">News #1</label>
+                <img src="./img/bg-1.png" class="news-itemimage">
+
+                <label class="newstext">Es gibt noch keine Neuigkeiten!</label>
+            </div>
+        </div>
+
+        <label class="changelogs-title">Changelogs</label>
+        <div class="changelogs-container">
+            <div class="changelogs-itemcontainer">
+                <label class="changelogs-label" style="font-weight: bolder;">Changelogs vom 25.03.2022</label>
+                <br />
+                <label class="changelogs-label">[+] Userpanel</label>
+                <br />
+                <label class="changelogs-label">[+] Kriegssystem</label>
+                <br />
+                <label class="changelogs-label">[+] EasyAnticheat</label>
+                <br />
+                <label class="changelogs-label">[~] Inventar fix</label>
+                <br />
+                <label class="changelogs-label">[~] FFA fix</label>
+                <br />
+                <label class="changelogs-label">[~] Anti Server Laggs</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-crosshair">
+        <label class="container" style="position: absolute;left: 5.5vh;top: 7vh;">Aktivieren
+            <input type="checkbox" id="toggleCrosshairCheckbox" onclick="toggleCorsshair(document.getElementById('toggleCrosshairCheckbox').checked)">
+            <span class="checkmark"></span>
+        </label>
+
+        <div id="crosshair-item-containerbox">
+            <div class="crosshair-itemcontainer" id="crosshair-itemcontainerbyid-0" onclick="selectCrosshair(0)"></div>
+            <div class="crosshair-itemcontainer" id="crosshair-itemcontainerbyid-1" onclick="selectCrosshair(1)"><img class="crosshair-img" src="./img/crosshair/crosshair-1.png" alt=""></div>
+            <div class="crosshair-itemcontainer" id="crosshair-itemcontainerbyid-2" onclick="selectCrosshair(2)"><img style="height: 15vh;top: -1.75vh;left: -2.5vh;" class="crosshair-img" src="./img/crosshair/crosshair-2.png" alt=""></div>
+        </div>
+
+        <div class="save-crosshairbutton" onclick="saveCrosshair()">Speichern</div>
+    </div>
+
+    <div id="tab-settings">
+        
+    </div>
+</div>
+</body>
+<script>
+    let selectedCrosshair = null;
+
+    function selectCrosshair(id)
+    {
+        if (selectedCrosshair == null)
+        {
+            document.getElementById("crosshair-itemcontainerbyid-"+id).style.backgroundColor = "#2268d3";
+            selectedCrosshair = id;
+        } else {
+            document.getElementById("crosshair-itemcontainerbyid-"+selectedCrosshair).style.backgroundColor = "rgb(20, 20, 20)";
+            document.getElementById("crosshair-itemcontainerbyid-"+id).style.backgroundColor = "#2268d3";
+            selectedCrosshair = id;
+        }
+    }
+
+    function updateUserpanel(value, id)
+    {
+        document.getElementById('toggleCrosshairCheckbox').checked = value;
+        document.getElementById("crosshair-itemcontainerbyid-"+id).style.backgroundColor = "#2268d3";
+        selectedCrosshair = id;
+    }
+
+    function saveCrosshair()
+    {
+        if (selectedCrosshair == null) return;
+        let isActivated = document.getElementById('toggleCrosshairCheckbox').checked;
+        mp.trigger("Userpanel:SaveCrosshair", isActivated, selectedCrosshair);
+    }
+
+    function closeUserpanel()
+    {
+        mp.trigger("GGW:CloseUI:Userpanel")
+    }
+
+    function toggleCorsshair(value)
+    {
+        switch (value) {
+            case true:
+            document.getElementById("crosshair-item-containerbox").style.display = "block"
+            break;
+
+            case false:
+                document.getElementById("crosshair-item-containerbox").style.display = "none"
+            break;
+        
+            default:
+            break;
+        }
+    }
+
+    function clearTabs()
+    {
+        document.getElementById("tab-startseite").style.display = "none";
+        document.getElementById("tab-crosshair").style.display = "none";
+        document.getElementById("tab-settings").style.display = "none";
+        
+        document.getElementById("startseite-tab").style.textDecoration = "none";
+        document.getElementById("crosshair-tab").style.textDecoration = "none";
+        document.getElementById("settings-tab").style.textDecoration = "none";
+    }
+
+    function selecttab(tabname)
+    {
+        clearTabs();
+        document.getElementById("tab-"+tabname).style.display = "block";
+        document.getElementById(tabname+"-tab").style.textDecoration = "underline 0.3vh";
+        document.getElementById(tabname+"-tab").style.textDecorationColor = "#2268d3";
+    }
+</script>
+</html>

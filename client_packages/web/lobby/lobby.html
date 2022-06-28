@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <title>Lobby</title>
+</head>
+<body>
+    <div class="container">
+        <i class="fas fa-close" onclick="closeLobby()"></i>
+        <h1 class="title">Erstelle ein Lobby</h1>
+        <div class="fakeline"></div>
+
+        <input type="text" id="lobby-name" placeholder="Lobbyname">
+        <input type="number" maxlength="2" max="15" min="0" id="lobby-maxplayer" placeholder="Gebe die Anzahl der maximalen Spieler an">
+        <input type="password" id="lobby-password" placeholder="Passwort">
+
+        <button class="fake-btn" onclick="joinlobby()">Erstellen</button>
+    </div>
+</body>
+<script>
+function closeLobby() {
+    mp.trigger("closeLobby");
+}
+
+function joinlobby() {
+    let lobbyname = document.getElementById("lobby-name").value;
+    let maxplayer = document.getElementById("lobby-maxplayer").value;
+    let lobbypassword = document.getElementById("lobby-password").value;
+
+    if (lobbyname.length <= 3) return mp.trigger("showNotification", "Error", "Lobby-System", "Der Lobbyname ist zu kurz!");
+    if (maxplayer <= 1) return mp.trigger("showNotification", "Error", "Lobby-System", "Die Lobby muss mehr als 1 Spieler haben können!");
+    if (lobbypassword.length <= 3) return mp.trigger("showNotification", "Error", "Lobby-System", "Das Passwort ist zu kurz!");
+    if(/[^a-z\d]/i.test(lobbyname)) return mp.trigger("showNotification", "Error", "Lobby-System", "Du darfst keine Sonderzeichen im Lobbynamen haben!");
+    if(/[^a-z\d]/i.test(lobbypassword)) return mp.trigger("showNotification", "Error", "Lobby-System", "Du darfst keine Sonderzeichen im Passwort haben!");
+    if (lobbyname.includes(" ")) return logError("Du darfst kein Leerzeichen im Lobbynamen haben!");
+    if (lobbypassword.includes(" ")) return logError("Du darfst kein Leerzeichen im Passwort haben!");
+
+    mp.trigger("TryCreateLobby", lobbyname, lobbypassword, maxplayer);
+}
+</script>
+</html>

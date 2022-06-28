@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js"integrity="sha256-q2vnVvwrx3RbYXPyAwx7c2npmULQg2VdCXBoJ5+iigs=" crossorigin="anonymous"></script>
+    <title>Krieg</title>
+</head>
+<body>
+</body>
+<script>
+function playSound(soundname) {
+var sound = new Howl({
+    src: ['sounds/' + soundname + '.mp3'],
+    loop: false,
+    })
+        sound.play()
+        sound.on('end', function () {
+        mp.trigger('GGW:CloseUI:Krieg')
+    })
+}
+</script>
+</html>
